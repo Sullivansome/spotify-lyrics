@@ -50,7 +50,9 @@ fn http_get_bytes(url: &str) -> Option<Vec<u8>> {
 /// bigger clusters win ties. Returns None for empty input.
 fn vibrant_color(rgb: &[u8]) -> Option<(u8, u8, u8)> {
     let px: Vec<[f32; 3]> = rgb
-        .chunks_exact(3)
+        .as_chunks::<3>()
+        .0
+        .iter()
         .map(|c| [c[0] as f32, c[1] as f32, c[2] as f32])
         .collect();
     if px.len() < CLUSTERS {

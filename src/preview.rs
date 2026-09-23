@@ -45,7 +45,7 @@ pub fn export(output: &std::path::Path) -> Result<(), Box<dyn std::error::Error>
             (163, 213, 181),
         );
         let mut pixels = frame.pixels;
-        for pixel in pixels.chunks_exact_mut(4) {
+        for pixel in pixels.as_chunks_mut::<4>().0.iter_mut() {
             pixel.swap(0, 2);
         }
         image::save_buffer(

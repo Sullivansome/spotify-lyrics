@@ -956,12 +956,12 @@ mod tests {
         // bars. Inspect only the interior of that text region:
         // the one-point top/bottom hairlines must not satisfy this assertion.
         let row_bytes = frame.width as usize * 4;
-        let text_region: Vec<&[u8]> = frame
+        let text_region: Vec<&[u8; 4]> = frame
             .pixels
             .chunks_exact(row_bytes)
             .skip(4)
             .take(frame.height as usize - 8)
-            .flat_map(|row| row[80 * 4..].chunks_exact(4))
+            .flat_map(|row| row[80 * 4..].as_chunks::<4>().0.iter())
             .collect();
         let changed = text_region.into_iter().filter(|pixel| pixel[3] > 0).count();
         assert!(
@@ -992,7 +992,7 @@ mod tests {
             .chunks_exact(row_bytes)
             .skip(4)
             .take(frame.height as usize - 8)
-            .flat_map(|row| row.chunks_exact(4))
+            .flat_map(|row| row.as_chunks::<4>().0.iter())
             .filter(|pixel| pixel[3] > 0)
             .count();
         assert!(
