@@ -1,0 +1,41 @@
+---
+interface Props { command: string; label: string }
+const { command, label } = Astro.props;
+---
+<div class="command-block" data-command>
+  <div class="command-heading"><span>{label}</span><button type="button" class="copy-button" hidden>Copy</button></div>
+  <pre tabindex="0" aria-label={label}><code>{command}</code></pre>
+  <span class="copy-status" role="status" aria-live="polite"></span>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-command]').forEach(block => {
+    const button = block.querySelector<HTMLButtonElement>('button')!;
+    const status = block.querySelector<HTMLElement>('[role="status"]')!;
+    button.hidden = false;
+    let timer: ReturnType<typeof setTimeout>;
+    button.addEventListener('click', async () => {
+      clearTimeout(timer);
+      button.disabled = true;
+      button.dataset.state = 'loading';
+      button.textContent = 'Copying…';
+      status.textContent = '';
+      try {
+        await navigator.clipboard.writeText(block.querySelector('code')!.textContent!);
+        button.dataset.state = 'success';
+        button.textContent = 'Copied ✓';
+        status.textContent = 'Command copied.';
+      } catch {
+        button.dataset.state = 'error';
+        button.textContent = 'Try again';
+        status.textContent = 'Clipboard access was blocked. Select and copy the command above.';
+      } finally {
+        button.disabled = false;
+        if (button.dataset.state === 'success') timer = setTimeout(() => {
+          button.textContent = 'Copy';
+          delete button.dataset.state;
+          status.textContent = '';
+        }, 2500);
+      }
+    });
+  });
+</script>

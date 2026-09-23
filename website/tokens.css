@@ -1,0 +1,31 @@
+/* Hallmark · macrostructure: Split Studio · tone: music-focused, clear · anchor hue: green
+ * theme: custom · dark / geometric sans / Spotify-inspired green · nav: N1 · footer: Ft2
+ * pre-emit critique: P4 H4 E4 S5 R4 V4
+ */
+:root {
+  --color-paper: oklch(17% .005 155);
+  --color-surface: oklch(22% .007 155);
+  --color-raised: oklch(29% .009 155);
+  --color-ink: oklch(96% .006 155);
+  --color-muted: oklch(75% .008 155);
+  --color-rule: oklch(35% .009 155);
+  --color-control-border: oklch(57% .01 155);
+  --color-accent: oklch(76% .20 151);
+  --color-accent-hover: oklch(82% .18 151);
+  --color-accent-ink: oklch(16% .015 155);
+  --color-focus: oklch(88% .13 151);
+  --color-error: oklch(82% .10 25);
+  --color-success: var(--color-accent);
+  --color-transparent: transparent;
+  --color-renderer: oklch(0% 0 0);
+  --font-display: 'Manrope Variable', sans-serif;
+  --font-body: 'Geist Variable', sans-serif;
+  --font-code: ui-monospace, 'SFMono-Regular', monospace;
+  --space-2xs: .25rem; --space-xs: .5rem; --space-sm: .75rem; --space-md: 1rem;
+  --space-lg: 1.5rem; --space-xl: 2.5rem; --space-2xl: 4rem; --space-3xl: 6rem;
+  --text-sm: .875rem; --text-base: 1rem; --text-md: 1.25rem;
+  --text-display: clamp(3.5rem, 7.8vw, 7rem); --text-heading: clamp(2rem, 3.5vw, 3rem);
+  --radius-sm: .5rem; --radius-card: 1rem; --radius-pill: 100rem;
+  --ease-out: cubic-bezier(.16,1,.3,1); --ease-in: cubic-bezier(.7,0,.84,0); --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --dur-micro: 120ms; --dur-short: 220ms; --rule-hair: 1px;
+}

@@ -1,0 +1,31 @@
+---
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/geist';
+import '../../tokens.css';
+import '../styles/site.css';
+import document from '../../plugin.json';
+interface Props { title?: string; noindex?: boolean }
+const {title = 'Spotify for Island — Stay in the song', noindex = false} = Astro.props;
+const description = 'Synced lyrics and Spotify playback in a little space at the top of your Mac. An independent plugin for Island.';
+const canonical = new URL(Astro.url.pathname, Astro.site!);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} /><meta name="color-scheme" content="dark" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="island-plugin" type="application/json" href="/.well-known/island-plugin.json" />
+    <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:type" content="website" /><meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/previews/expanded.png', Astro.site!)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header wrap"><nav aria-label="Main navigation"><a class="wordmark" href="/">Spotify <span>for Island</span></a><div><a href="#setup">Set up</a><a href="https://island-companion.pages.dev/">Island ↗</a></div></nav></header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer wrap"><p>Independent. Open source. Made for your Island.</p><nav aria-label="Footer"><a href={document.links.source}>Source ↗</a><a href={document.links.support}>Get help ↗</a><a href="/.well-known/island-plugin.json">Market metadata</a></nav><p class="footnote">Not affiliated with Spotify. Spotify is a trademark of its owner. Preview images contain original sample text.</p></footer>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+[package]
+name = "island-plugin-spotify"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/Sullivansome/spotify-lyrics"
+readme = "README.md"
+description = "Spotify now-playing + synced lyrics for Island (inspired by Lyrisland)"
+publish = false
+
+[[bin]]
+name = "island-plugin-spotify"
+path = "src/main.rs"
+
+[dependencies]
+island-plugin-sdk = { git = "https://github.com/Sullivansome/island-plugin-sdk", rev = "e18d19453776712aef5e7486b3302b7072f75739" }
+island-plugin-api = { git = "https://github.com/Sullivansome/island-plugin-sdk", rev = "e18d19453776712aef5e7486b3302b7072f75739" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ureq = { version = "2", features = ["json"] }
+urlencoding = "2"
+fontdue = "0.9"
+# Artwork decode for accent-color extraction (already in the tree via GPUI).
+image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
+
+# This repository builds independently, including when checked out inside another workspace.
+[workspace]
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

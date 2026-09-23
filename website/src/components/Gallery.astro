@@ -1,0 +1,30 @@
+---
+import document from '../../plugin.json';
+---
+<figure class="gallery" data-gallery>
+  <div class="gallery-heading"><span>On your Island</span><span class="quiet">Renderer preview</span></div>
+  <div class="gallery-stage">
+    {document.previews.map((preview, index) => <div class:list={['gallery-image', {compact: index === 0}]} data-image={index} hidden={index !== 0}><img src={new URL(preview.url).pathname} width={index === 0 ? 490 : 760} height={index === 0 ? 48 : 360} alt={preview.alt} fetchpriority={index === 0 ? 'high' : 'auto'} /></div>)}
+    <p class="preview-error" hidden>Preview unavailable. Reload this page to try again.</p>
+  </div>
+  <div class="gallery-controls" role="group" aria-label="Preview layout" hidden>{document.previews.map((preview,index) => <button data-index={index} aria-pressed={index === 0} aria-describedby="preview-caption">{preview.label}</button>)}</div>
+  <figcaption id="preview-caption" aria-live="polite">{document.previews[0].caption}</figcaption>
+</figure>
+<script>
+  import documentData from '../../plugin.json';
+  const gallery = document.querySelector<HTMLElement>('[data-gallery]')!;
+  gallery.querySelector<HTMLElement>('.gallery-controls')!.hidden = false;
+  gallery.querySelectorAll<HTMLButtonElement>('button').forEach(button => {
+    button.addEventListener('click', () => {
+      const index = Number(button.dataset.index);
+      gallery.querySelectorAll<HTMLElement>('[data-image]').forEach(image => { image.hidden = Number(image.dataset.image) !== index; });
+      gallery.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      gallery.querySelector('figcaption')!.textContent = documentData.previews[index].caption;
+    });
+  });
+  gallery.querySelectorAll('img').forEach(img => {
+    const fail = () => { gallery.querySelector<HTMLElement>('.preview-error')!.hidden = false; };
+    img.addEventListener('error', fail);
+    if (img.complete && img.naturalWidth === 0) fail();
+  });
+</script>

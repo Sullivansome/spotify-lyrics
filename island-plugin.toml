@@ -1,0 +1,27 @@
+api_version = 2
+
+[plugin]
+id = "com.sullivansome.spotify"
+name = "Spotify"
+version = "0.1.0"
+description = "Now playing + synced lyrics from local Spotify (AppleScript + LRCLIB / NetEase)"
+authors = ["Island"]
+license = "MIT"
+homepage = "https://island-spotify.pages.dev"
+repository = "https://github.com/Sullivansome/spotify-lyrics"
+
+[entry]
+kind = "ipc"
+command = "island-plugin-spotify"
+
+[view]
+expanded = "custom"
+collapsed = "metadata"
+preferred_expanded = { w = 245, h = 24 }
+
+[permissions]
+grant = ["present", "present.sticky", "surface.framebuffer", "net"]
+
+[market]
+platforms = ["macos"]
+categories = ["media", "spotify", "lyrics"]

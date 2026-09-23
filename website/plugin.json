@@ -1,0 +1,42 @@
+{
+  "$schema": "https://island-companion.pages.dev/schemas/plugin-website-v1.schema.json",
+  "schema_version": 1,
+  "id": "com.sullivansome.spotify",
+  "name": "Spotify for Island",
+  "summary": "Synced lyrics and Spotify playback in a little space at the top of your Mac.",
+  "description": "Keep the current lyric beside your work. Spotify for Island follows the Spotify Desktop app through macOS Automation, with synced lyrics from LRCLIB and NetEase. No additional Spotify login is needed. The bundled plugin uses the compact strip; the expanded preview shows another renderer layout.",
+  "links": {
+    "homepage": "https://island-spotify.pages.dev/",
+    "documentation": "https://island-spotify.pages.dev/#setup",
+    "support": "https://github.com/Sullivansome/spotify-lyrics/issues",
+    "source": "https://github.com/Sullivansome/spotify-lyrics"
+  },
+  "features": [
+    {
+      "title": "Lyrics that keep time",
+      "description": "A synced line follows your playback position. Availability depends on lyric providers and track matches."
+    },
+    {
+      "title": "Your desktop session",
+      "description": "Connect through macOS Automation. Keep using Spotify Desktop with the account you already have."
+    },
+    {
+      "title": "Playback within reach",
+      "description": "Pause, skip, or go back through the plugin and native companion controls. Keyboard input works while the plugin has focus."
+    }
+  ],
+  "previews": [
+    {
+      "url": "https://island-spotify.pages.dev/previews/compact.png",
+      "label": "Compact",
+      "alt": "Compact lyric strip with playing bars and original sample text",
+      "caption": "Default bundled layout · original sample content from the real renderer."
+    },
+    {
+      "url": "https://island-spotify.pages.dev/previews/expanded.png",
+      "label": "Expanded",
+      "alt": "Expanded renderer sample with synced lyrics and playback controls",
+      "caption": "Renderer example · the bundled plugin currently uses the compact strip."
+    }
+  ]
+}
