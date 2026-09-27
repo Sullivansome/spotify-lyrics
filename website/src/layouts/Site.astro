@@ -24,8 +24,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site!);
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <header class="site-header wrap"><nav aria-label="Main navigation"><a class="wordmark" href="/">Spotify <span>for Island</span></a><div><a href="#setup">Set up</a><a href="https://island-companion.pages.dev/">Island ↗</a></div></nav></header>
+    <header class="site-header wrap"><nav aria-label="Main navigation"><a class="wordmark" href="/">Spotify <span>for Island</span></a><div><a href="#setup">Set up</a><a href="https://island.brighteng.org/">Island ↗</a></div></nav></header>
     <main id="main" tabindex="-1"><slot /></main>
-    <footer class="site-footer wrap"><p>Independent. Open source. Made for your Island.</p><nav aria-label="Footer"><a href={document.links.source}>Source ↗</a><a href={document.links.support}>Get help ↗</a><a href="/.well-known/island-plugin.json">Market metadata</a></nav><p class="footnote">Not affiliated with Spotify. Spotify is a trademark of its owner. Preview images contain original sample text.</p></footer>
+    <footer class="site-footer wrap"><p>Independent. Open source. Made for your Island.</p><nav aria-label="Footer"><a href={document.links.source}>Source ↗</a><a href={document.links.support}>Get help ↗</a><a href="/.well-known/island-plugin.json">Market metadata</a><a href="https://me.brighteng.org/">More from bright ↗</a></nav><p class="footnote">Not affiliated with Spotify. Spotify is a trademark of its owner. Preview images contain original sample text.</p></footer>
   </body>
 </html>

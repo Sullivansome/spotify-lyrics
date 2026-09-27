@@ -2,6 +2,10 @@
 
 Spotify Desktop playback and synchronized lyrics in an Island plugin. Uses macOS Automation to read and control your local Spotify session, with lyrics from LRCLIB and NetEase. No extra Spotify OAuth login is required. Runtime integration supports macOS; availability of lyrics depends on external providers.
 
+Spotify Lyrics ships with [Island 1.0.0 for Apple silicon Macs](https://island.brighteng.org/guide/). The official app requires an [Island 1.x license: US$19 once for two Macs](https://island.brighteng.org/pricing/), with 1.x updates and optional future major upgrades. The plugin itself remains MIT licensed.
+
+[More from bright](https://me.brighteng.org/)
+
 ## Build and install
 
 Requires stable Rust with edition 2024 support. The public API and SDK are pinned Git dependencies; this repository has no private source dependencies.

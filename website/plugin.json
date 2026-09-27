@@ -1,5 +1,5 @@
 {
-  "$schema": "https://island-companion.pages.dev/schemas/plugin-website-v1.schema.json",
+  "$schema": "https://island.brighteng.org/schemas/plugin-website-v1.schema.json",
   "schema_version": 1,
   "id": "com.sullivansome.spotify",
   "name": "Spotify for Island",
