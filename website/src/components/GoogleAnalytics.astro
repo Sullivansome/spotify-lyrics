@@ -1,0 +1,23 @@
+---
+const hostname = new URL(Astro.site!).hostname;
+---
+<script is:inline define:vars={{ hostname }}>
+  if (window.location.hostname === hostname && !window.gtag) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    let referrer = '';
+    try { referrer = new URL(document.referrer).origin; } catch {}
+    window.gtag('config', 'G-ZXKPKDPRZW', {
+      page_location: window.location.origin + window.location.pathname,
+      page_referrer: referrer,
+      cookie_domain: hostname,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZXKPKDPRZW';
+    document.head.appendChild(script);
+  }
+</script>

@@ -1,12 +1,13 @@
 ---
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import '@fontsource-variable/manrope';
 import '@fontsource-variable/geist';
 import '../../tokens.css';
 import '../styles/site.css';
 import document from '../../plugin.json';
 interface Props { title?: string; noindex?: boolean }
-const {title = 'Spotify for Island — Stay in the song', noindex = false} = Astro.props;
-const description = 'Synced lyrics and Spotify playback in a little space at the top of your Mac. An independent plugin for Island.';
+const {title = 'Spotify lyrics overlay for Mac — Spotify for Island', noindex = false} = Astro.props;
+const description = 'Follow synced Spotify lyrics and control playback at the top of your Mac. Uses Spotify Desktop without another login. Requires an Island license.';
 const canonical = new URL(Astro.url.pathname, Astro.site!);
 ---
 <!doctype html>
@@ -21,6 +22,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site!);
     <meta property="og:image" content={new URL('/previews/expanded.png', Astro.site!)} />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
+    <GoogleAnalytics />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>

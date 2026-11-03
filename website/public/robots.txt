@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://island-spotify.pages.dev/sitemap.xml
